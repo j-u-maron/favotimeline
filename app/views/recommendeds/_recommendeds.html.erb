@@ -1,0 +1,22 @@
+<ul class="list-unstyled">
+  <% recommendeds.each do |recommended| %>
+    <li class="media mb-3">
+      <img class="mr-2 rounded" src="<%= gravatar_url(recommended.user, { size: 50 }) %>" alt="">
+      <div class="media-body">
+        <div>
+          <%= link_to recommended.user.name, user_path(recommended.user) %> <span class="text-muted">posted at <%= recommended.created_at %></span>
+        </div>
+        <div>
+          <p><%= recommended.content %></p>
+          <p>タグ: <%= recommended.tag %></p>
+        </div>
+        <div>
+          <% if current_user == recommended.user %>
+            <%= link_to "Delete", recommended, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+          <% end %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+  <%= paginate recommendeds %>
+</ul>

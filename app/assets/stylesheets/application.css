@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+
+.acd-check{
+  display: none;
+}
+
+
+.acd-content{
+  display: none;
+}
+
+.acd-check1{
+  cursor: pointer;
+}
+
+.acd-check1:hover{
+  color: blue;
+  font-weight: 700;
+}
+
+.acd-check:checked + .acd-content{
+  display: block;
+}
