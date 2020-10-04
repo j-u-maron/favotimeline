@@ -12,5 +12,6 @@ class ApplicationController < ActionController::Base
   
   def counts(user)
     @count_recommendeds = user.recommendeds.count
+    @count_blockings = user.blockings.count
   end
 end

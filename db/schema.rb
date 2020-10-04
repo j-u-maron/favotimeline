@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_03_031605) do
+ActiveRecord::Schema.define(version: 2020_10_04_020121) do
 
   create_table "recommendeds", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 2020_10_03_031605) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_recommendeds_on_user_id"
+  end
+
+  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "block_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["block_id"], name: "index_relationships_on_block_id"
+    t.index ["user_id", "block_id"], name: "index_relationships_on_user_id_and_block_id", unique: true
+    t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -30,4 +40,6 @@ ActiveRecord::Schema.define(version: 2020_10_03_031605) do
   end
 
   add_foreign_key "recommendeds", "users"
+  add_foreign_key "relationships", "users"
+  add_foreign_key "relationships", "users", column: "block_id"
 end
