@@ -14,9 +14,13 @@
     </aside>
     <div class="col-sm-8">
       <ul class="nav nav-tabs nav-justified mb-3">
-      <li class="nav-item"><a href="/" class="nav-link <%= "active" %>">TimeLine</a></li>
-      <li class="nav-item"><a href="<%= search_path %>" class="nav-link">Search</a></li>
+      <li class="nav-item"><a href="/" class="nav-link">TimeLine</a></li>
+      <li class="nav-item"><a href="<%= search_path %>" class="nav-link <%= "active" %>">Search</a></li>
     </ul>
+    <%= form_tag(search_path, :method => "get") do %>
+      <%= text_field_tag :search %>
+      <%= submit_tag "search" %>
+    <% end %>
     <%= render "recommendeds/recommendeds", recommendeds: @recommendeds %>
     </div>
   </div>

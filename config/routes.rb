@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :recommendeds, only: [:create, :destroy]
+  get "search" => "toppages#search"
+  
+  resources :recommendeds, only: [:index, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
 end

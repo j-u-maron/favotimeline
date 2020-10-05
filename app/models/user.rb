@@ -26,4 +26,8 @@ class User < ApplicationRecord
   def blocking?(other_user)
     self.blockings.include?(other_user)
   end
+  
+  def feed_recommendeds
+    Recommended.where.not(user_id: self.blocking_ids)
+  end
 end

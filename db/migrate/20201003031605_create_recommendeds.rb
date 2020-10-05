@@ -1,6 +1,6 @@
 class CreateRecommendeds < ActiveRecord::Migration[5.2]
   def change
-    create_table :recommendeds do |t|
+    create_table :recommendedrailss do |t|
       t.string :content
       t.string :tag
       t.references :user, foreign_key: true
